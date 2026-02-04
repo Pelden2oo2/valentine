@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will You Be My Valentine?</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,12 +12,6 @@
 
         * {
             transition: all 0.3s ease;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            touch-action: manipulation;
-            overflow-x: hidden;
         }
 
         .heartbeat {
@@ -25,14 +19,28 @@
         }
 
         @keyframes heartbeat {
-
-            0%,
-            100% {
+            0% {
                 transform: scale(1);
             }
 
-            50% {
+            5% {
                 transform: scale(1.1);
+            }
+
+            10% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.1);
+            }
+
+            20% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1);
             }
         }
 
@@ -41,14 +49,16 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
+            0% {
                 transform: translateY(0px);
             }
 
             50% {
-                transform: translateY(-10px);
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
             }
         }
 
@@ -57,135 +67,91 @@
             width: 10px;
             height: 10px;
             opacity: 0;
-            pointer-events: none;
         }
 
-        /* Mobile-specific optimizations */
-        .btn-touch {
-            min-height: 60px;
-            padding: 16px 24px;
-            font-size: 1.5rem;
-        }
-
-        .gif-container {
-            max-width: 90vw;
-            margin: 0 auto;
-        }
-
-        /* Prevent text selection on buttons */
-        .no-select {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        /* Better touch targets */
-        button,
-        .touch-target {
-            min-height: 44px;
-            min-width: 44px;
-        }
-
-        /* Hide scrollbar for mobile */
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
+        .gif-hover-effect:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.2);
         }
     </style>
 </head>
 
-<body
-    class="bg-gradient-to-br from-pink-50 to-red-50 min-h-screen flex items-center justify-center p-4 font-[Poppins] overflow-hidden">
-    <div id="main-container" class="w-full max-w-md mx-auto text-center">
-        <!-- Heart decoration -->
-        <div class="flex justify-center mb-6">
-            <div class="heartbeat">
-                <i class="fas fa-heart text-red-500 text-4xl float"></i>
-            </div>
-        </div>
-
+<body class="bg-gradient-to-br from-pink-50 to-red-50 min-h-screen flex items-center justify-center p-4 font-[Poppins]">
+    <div id="main-container" class="max-w-2xl w-full text-center">
         <!-- Title -->
-        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800 px-2"
-            style="font-family: 'Dancing Script', cursive;">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-800" style="font-family: 'Dancing Script', cursive;">
             A Special Question For You
         </h1>
 
         <!-- Main content card -->
-        <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 mb-6 border border-pink-100 mx-2">
-            <!-- GIF Container -->
-            <div class="mb-6 gif-container">
-                <div class="rounded-xl overflow-hidden shadow-lg mx-auto">
-                    <img src="./hanako-kun-anime.gif" alt="Cute anime gif" class="w-full h-auto rounded-xl touch-target"
+        <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 mb-8 border border-pink-100">
+            <!-- GIF Section (Replaced the text) -->
+            <div class="mb-10">
+                <!-- Cute Valentine's GIF -->
+                <div class="mb-6 rounded-2xl overflow-hidden shadow-lg max-w-md mx-auto">
+                    <img src="./hanako-kun-anime.gif" alt="Cute hearts animation" class="w-full h-auto rounded-2xl"
                         id="valentine-gif">
                 </div>
-            </div>
 
-            <!-- Question Card -->
-            <div class="mb-8 p-5 bg-gradient-to-r from-pink-100 to-red-100 rounded-xl border border-pink-200">
-                <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2 heartbeat" id="question-text"
-                    style="font-family: 'Dancing Script', cursive;">
-                    Will you be my Valentine?
-                </h3>
-                <p class="text-gray-600 italic mt-2 text-sm">
-                    💝 Tap your answer below 💝
+                <!-- GIF caption -->
+                <p class="text-gray-600 italic mt-2 text-lg">
+                    This is how my heart feels around you 💖
                 </p>
             </div>
 
-            <!-- Response buttons - Stacked for mobile -->
-            <div class="flex flex-col justify-center items-center gap-4 mt-8">
+            <div class="mb-12 p-6 bg-gradient-to-r from-pink-100 to-red-100 rounded-2xl border border-pink-200">
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2 heartbeat" id="question-text"
+                    style="font-family: 'Dancing Script', cursive;">
+                    Will you be my Valentine?
+                </h3>
+                <p class="text-gray-600 italic mt-2">
+                    💝 Please choose your answer below 💝
+                </p>
+            </div>
+
+            <!-- Response buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mt-12">
                 <!-- Yes Button -->
                 <button id="yes-btn"
-                    class="no-select btn-touch w-full max-w-xs bg-gradient-to-r from-pink-500 to-red-500 text-white text-xl font-bold rounded-xl shadow-lg active:scale-95 active:shadow-md transition-all duration-200">
-                    <i class="fas fa-heart mr-2"></i> YES! <i class="fas fa-heart ml-2"></i>
+                    class="px-10 py-5 bg-gradient-to-r from-pink-500 to-red-500 text-white text-2xl font-bold rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 transform hover:-translate-y-1">
+                    <i class="fas fa-heart mr-3"></i> YES! <i class="fas fa-heart ml-3"></i>
                 </button>
 
                 <!-- No Button -->
                 <button id="no-btn"
-                    class="no-select btn-touch w-full max-w-xs bg-gradient-to-r from-gray-400 to-gray-600 text-white text-xl font-bold rounded-xl shadow-lg active:scale-95 active:shadow-md transition-all duration-200">
+                    class="px-10 py-5 bg-gradient-to-r from-gray-400 to-gray-600 text-white text-2xl font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                     No
                 </button>
             </div>
 
             <!-- Counter -->
-            <div class="mt-6 text-gray-500">
-                <p id="counter-text" class="text-base">"Yes" has grown <span id="click-count"
+            <div class="mt-10 text-gray-500">
+                <p id="counter-text" class="text-lg">The "Yes" button has grown <span id="click-count"
                         class="font-bold text-pink-600">0</span> times</p>
-            </div>
-
-            <!-- Tap hint for mobile -->
-            <div class="mt-4 text-gray-400 text-sm">
-                <p class="flex items-center justify-center gap-1">
-                    <i class="fas fa-hand-pointer"></i> Tap the buttons to interact
-                </p>
             </div>
         </div>
 
         <!-- Footer message -->
-        <div class="text-gray-500 italic text-sm px-2">
+        <div class="text-gray-500 italic">
             <p>Made with <i class="fas fa-heart text-red-500"></i> for someone special</p>
         </div>
     </div>
 
     <!-- Success Message (Initially Hidden) -->
-    <div id="success-message" class="fixed inset-0 bg-black/80 flex items-center justify-center p-4 hidden z-50">
+    <div id="success-message" class="fixed inset-0 bg-black/70 flex items-center justify-center p-4 hidden z-50">
         <div
-            class="bg-gradient-to-br from-pink-100 to-white w-full max-w-sm rounded-2xl shadow-2xl p-8 text-center mx-4 animate-scale-in">
-            <div class="text-6xl text-red-500 mb-4">
+            class="bg-gradient-to-br from-pink-100 to-white max-w-md w-full rounded-3xl shadow-2xl p-10 text-center animate-scale-in">
+            <div class="text-7xl text-red-500 mb-6">
                 <i class="fas fa-heart-circle-check"></i>
             </div>
-            <h2 class="text-3xl font-bold text-gray-800 mb-3" style="font-family: 'Dancing Script', cursive;">
-                You've made me so happy!
+            <h2 class="text-4xl font-bold text-gray-800 mb-4" style="font-family: 'Dancing Script', cursive;">
+                You've made me the happiest person!
             </h2>
-            <p class="text-lg text-gray-600 mb-6">
-                I can't wait to celebrate with you! 💖
+            <p class="text-xl text-gray-600 mb-8">
+                I can't wait to celebrate Valentine's Day with you! 💖
             </p>
             <button id="close-success"
-                class="no-select px-6 py-3 bg-gradient-to-r from-pink-500 to-red-500 text-white text-lg font-bold rounded-xl shadow-lg active:scale-95 w-full">
+                class="px-8 py-3 bg-gradient-to-r from-pink-500 to-red-500 text-white text-xl font-bold rounded-2xl shadow-lg hover:shadow-xl">
                 Let's celebrate! <i class="fas fa-champagne-glasses ml-2"></i>
             </button>
         </div>
@@ -196,6 +162,19 @@
         let clickCount = 0;
         let yesButtonScale = 1;
         let noButtonTextIndex = 0;
+        let gifIndex = 0;
+
+        // Array of cute Valentine GIFs
+        const valentineGifs = [
+            "https://media.giphy.com/media/l0Exk8EUzSLXm3ZVe/giphy.gif", // Floating hearts
+            "https://media.giphy.com/media/26tknCqiJrBQG6DrC/giphy.gif", // Beating heart
+            "https://media.giphy.com/media/26tOZ42Mg6pbTUPHW/giphy.gif", // Puppy with heart
+            "https://media.giphy.com/media/3o7TKz8a8XWi8X0XI4/giphy.gif", // Kitten hugging heart
+            "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif", // Bears with hearts
+            "https://media.giphy.com/media/l4KhQdvu0p4GcZQ9i/giphy.gif", // Blushing anime
+            "https://media.giphy.com/media/26ufnwz3wDUli7GU0/giphy.gif", // Cartoon heart eyes
+            "https://media.giphy.com/media/xT1R9Zv8YXfBXkDJKo/giphy.gif"  // Sparkling hearts
+        ];
 
         // Array of texts for the "No" button
         const noButtonTexts = [
@@ -217,6 +196,26 @@
             "You're breaking my heart! 💔"
         ];
 
+        // Array of romantic questions to display
+        const romanticQuestions = [
+            "Will you be my Valentine?",
+            "Would you like to be my Valentine?",
+            "Do you want to be my Valentine?",
+            "Could you be my Valentine?",
+            "May I have the honor of being your Valentine?"
+        ];
+
+        // Array of GIF captions
+        const gifCaptions = [
+            "This is how my heart feels around you 💖",
+            "My heart does this every time I see you",
+            "You make my heart flutter like this",
+            "This is what you do to my heart",
+            "My heart's reaction when you smile",
+            "Can't stop thinking about you",
+            "You're always on my mind"
+        ];
+
         // DOM Elements
         const yesButton = document.getElementById('yes-btn');
         const noButton = document.getElementById('no-btn');
@@ -224,42 +223,34 @@
         const successMessage = document.getElementById('success-message');
         const closeSuccessButton = document.getElementById('close-success');
         const questionText = document.getElementById('question-text');
+        const valentineGif = document.getElementById('valentine-gif');
+        const gifCaption = document.querySelector('.text-gray-600.italic.mt-2');
 
-        // Array of romantic questions to display
-        const romanticQuestions = [
-            "Will you be my Valentine?",
-            "Would you like to be my Valentine?",
-            "Do you want to be my Valentine?",
-            "Could you be my Valentine?",
-            "May I be your Valentine?"
-        ];
-
-        // Initialize with a random romantic question
+        // Initialize with random romantic question
         questionText.textContent = romanticQuestions[Math.floor(Math.random() * romanticQuestions.length)];
 
-        // Mobile touch optimization for No button
-        noButton.addEventListener('touchstart', function (e) {
-            e.preventDefault();
-            handleNoClick();
-        });
-
-        noButton.addEventListener('click', function (e) {
-            e.preventDefault();
-            handleNoClick();
-        });
-
-        function handleNoClick() {
+        // No button click handler
+        noButton.addEventListener('click', function () {
             // Increment click counter
             clickCount++;
             clickCountElement.textContent = clickCount;
 
-            // Increase Yes button size (with max limit for mobile)
-            yesButtonScale = Math.min(yesButtonScale + 0.15, 2.5);
+            // Increase Yes button size
+            yesButtonScale += 0.2;
             yesButton.style.transform = `scale(${yesButtonScale})`;
 
             // Change No button text
             noButtonTextIndex = (noButtonTextIndex + 1) % noButtonTexts.length;
             noButton.textContent = noButtonTexts[noButtonTextIndex];
+
+            // Change GIF every 2 clicks
+            if (clickCount % 2 === 0) {
+                gifIndex = (gifIndex + 1) % valentineGifs.length;
+                valentineGif.src = valentineGifs[gifIndex];
+
+                // Change caption too
+                gifCaption.textContent = gifCaptions[Math.floor(Math.random() * gifCaptions.length)];
+            }
 
             // Change question text every 3 clicks
             if (clickCount % 3 === 0) {
@@ -267,11 +258,11 @@
                 questionText.textContent = romanticQuestions[randomIndex];
             }
 
-            // Make No button smaller temporarily (touch feedback)
-            noButton.style.transform = 'scale(0.95)';
+            // Make No button smaller temporarily
+            noButton.style.transform = 'scale(0.9)';
             setTimeout(() => {
                 noButton.style.transform = 'scale(1)';
-            }, 150);
+            }, 200);
 
             // Change No button color gradually
             const grayValue = Math.max(100, 600 - clickCount * 30);
@@ -287,25 +278,14 @@
 
             // Create floating hearts animation
             createHearts();
-
-            // Vibration feedback for mobile (if supported)
-            if (navigator.vibrate) {
-                navigator.vibrate(50);
-            }
-        }
-
-        // Mobile touch optimization for Yes button
-        yesButton.addEventListener('touchstart', function (e) {
-            e.preventDefault();
-            handleYesClick();
         });
 
-        yesButton.addEventListener('click', function (e) {
-            e.preventDefault();
-            handleYesClick();
-        });
+        // Yes button click handler
+        yesButton.addEventListener('click', function () {
+            // Change to celebration GIF
+            valentineGif.src = "https://media.giphy.com/media/xT8qBhrlNoo8BYsjf2/giphy.gif"; // Celebration GIF
+            gifCaption.textContent = "Yay! You just made my day! 🎉💖";
 
-        function handleYesClick() {
             // Show success message
             successMessage.classList.remove('hidden');
             successMessage.classList.add('flex');
@@ -313,36 +293,21 @@
             // Create confetti effect
             createConfetti();
 
-            // Vibration feedback for mobile (if supported)
-            if (navigator.vibrate) {
-                navigator.vibrate([100, 50, 100]);
-            }
-
-            // Play success sound
+            // Play sound if available
             playSuccessSound();
-        }
+        });
 
-        // Close success message with touch support
-        closeSuccessButton.addEventListener('touchend', function (e) {
-            e.preventDefault();
+        // Close success message
+        closeSuccessButton.addEventListener('click', function () {
             successMessage.classList.add('hidden');
             successMessage.classList.remove('flex');
         });
 
-        closeSuccessButton.addEventListener('click', function (e) {
-            e.preventDefault();
-            successMessage.classList.add('hidden');
-            successMessage.classList.remove('flex');
-        });
-
-        // Create floating hearts animation optimized for mobile
+        // Create floating hearts animation
         function createHearts() {
             const container = document.getElementById('main-container');
 
-            // Fewer hearts on mobile for performance
-            const heartCount = window.innerWidth < 768 ? 3 : 5;
-
-            for (let i = 0; i < heartCount; i++) {
+            for (let i = 0; i < 5; i++) {
                 const heart = document.createElement('div');
                 heart.innerHTML = '<i class="fas fa-heart text-red-400"></i>';
                 heart.classList.add('confetti');
@@ -351,14 +316,12 @@
                 const startX = Math.random() * window.innerWidth;
                 const startY = window.innerHeight;
 
-                // Random size (smaller on mobile)
-                const size = window.innerWidth < 768 ?
-                    Math.random() * 15 + 8 :
-                    Math.random() * 20 + 10;
+                // Random size
+                const size = Math.random() * 20 + 10;
                 heart.style.fontSize = `${size}px`;
 
                 // Random animation duration
-                const duration = Math.random() * 2 + 1.5;
+                const duration = Math.random() * 3 + 2;
 
                 // Apply styles
                 heart.style.left = `${startX}px`;
@@ -371,7 +334,7 @@
                 // Animate
                 const animation = heart.animate([
                     { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
-                    { transform: `translate(${Math.random() * 80 - 40}px, -150px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                    { transform: `translate(${Math.random() * 100 - 50}px, -200px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
                 ], {
                     duration: duration * 1000,
                     easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
@@ -382,15 +345,12 @@
             }
         }
 
-        // Create confetti effect for success (optimized for mobile)
+        // Create confetti effect for success
         function createConfetti() {
             const container = document.body;
             const colors = ['#ef4444', '#ec4899', '#8b5cf6', '#3b82f6', '#10b981'];
 
-            // Fewer confetti particles on mobile
-            const confettiCount = window.innerWidth < 768 ? 50 : 100;
-
-            for (let i = 0; i < confettiCount; i++) {
+            for (let i = 0; i < 100; i++) {
                 const confetti = document.createElement('div');
                 confetti.classList.add('confetti');
 
@@ -398,19 +358,19 @@
                 const shapeType = Math.floor(Math.random() * 3);
                 if (shapeType === 0) {
                     // Circle
-                    confetti.style.width = '8px';
-                    confetti.style.height = '8px';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
                     confetti.style.borderRadius = '50%';
                 } else if (shapeType === 1) {
                     // Heart
                     confetti.innerHTML = '<i class="fas fa-heart"></i>';
-                    confetti.style.fontSize = '10px';
+                    confetti.style.fontSize = '12px';
                     confetti.style.width = 'auto';
                     confetti.style.height = 'auto';
                 } else {
                     // Square
-                    confetti.style.width = '8px';
-                    confetti.style.height = '8px';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
                 }
 
                 // Random color
@@ -436,9 +396,9 @@
                 // Random animation
                 const animation = confetti.animate([
                     { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
-                    { transform: `translate(${Math.random() * 150 - 75}px, ${window.innerHeight}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+                    { transform: `translate(${Math.random() * 200 - 100}px, ${window.innerHeight}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
                 ], {
-                    duration: Math.random() * 2000 + 1500,
+                    duration: Math.random() * 3000 + 2000,
                     easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
                 });
 
@@ -447,10 +407,10 @@
             }
         }
 
-        // Play a subtle success sound (mobile-friendly)
+        // Play a subtle success sound
         function playSuccessSound() {
+            // Create audio context for a simple beep
             try {
-                // Create a simple beep using Web Audio API
                 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 const oscillator = audioContext.createOscillator();
                 const gainNode = audioContext.createGain();
@@ -458,58 +418,42 @@
                 oscillator.connect(gainNode);
                 gainNode.connect(audioContext.destination);
 
-                // Happy melody for mobile
                 oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime); // C5
                 oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // E5
                 oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2); // G5
 
-                gainNode.gain.setValueAtTime(0.05, audioContext.currentTime); // Quieter on mobile
-                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
 
                 oscillator.start(audioContext.currentTime);
                 oscillator.stop(audioContext.currentTime + 0.5);
             } catch (e) {
                 // Audio context not supported, silently fail
-                console.log("Audio not supported on this device");
             }
         }
 
-        // Prevent accidental zoom on double-tap
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function (event) {
-            const now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
+        // Make the Yes button float on hover
+        yesButton.addEventListener('mouseenter', function () {
+            yesButton.classList.add('float');
+        });
+
+        yesButton.addEventListener('mouseleave', function () {
+            yesButton.classList.remove('float');
+        });
 
         // Add CSS for scale animation
         const style = document.createElement('style');
         style.textContent = `
             .animate-scale-in {
-                animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             }
             
             @keyframes scaleIn {
-                from { transform: scale(0.85); opacity: 0; }
+                from { transform: scale(0.8); opacity: 0; }
                 to { transform: scale(1); opacity: 1; }
-            }
-            
-            /* iOS Safari specific fixes */
-            @supports (-webkit-touch-callout: none) {
-                button {
-                    cursor: pointer;
-                }
             }
         `;
         document.head.appendChild(style);
-
-        // Prevent context menu on long press
-        document.addEventListener('contextmenu', function (e) {
-            e.preventDefault();
-            return false;
-        });
     </script>
 </body>
 
