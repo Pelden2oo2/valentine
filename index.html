@@ -60,7 +60,6 @@
             pointer-events: none;
         }
 
-        /* Mobile-specific optimizations */
         .btn-touch {
             min-height: 60px;
             padding: 16px 24px;
@@ -72,7 +71,6 @@
             margin: 0 auto;
         }
 
-        /* Prevent text selection on buttons */
         .no-select {
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -80,21 +78,10 @@
             user-select: none;
         }
 
-        /* Better touch targets */
         button,
         .touch-target {
             min-height: 44px;
             min-width: 44px;
-        }
-
-        /* Hide scrollbar for mobile */
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
         }
     </style>
 </head>
@@ -102,6 +89,12 @@
 <body
     class="bg-gradient-to-br from-pink-50 to-red-50 min-h-screen flex items-center justify-center p-4 font-[Poppins] overflow-hidden">
     <div id="main-container" class="w-full max-w-md mx-auto text-center">
+        <!-- Heart decoration -->
+        <div class="flex justify-center mb-6">
+            <div class="heartbeat">
+                <i class="fas fa-heart text-red-500 text-4xl float"></i>
+            </div>
+        </div>
 
         <!-- Title -->
         <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800 px-2"
@@ -157,6 +150,11 @@
                     <i class="fas fa-hand-pointer"></i> Tap the buttons to interact
                 </p>
             </div>
+        </div>
+
+        <!-- Footer message -->
+        <div class="text-gray-500 italic text-sm px-2">
+            <p>Made with <i class="fas fa-heart text-red-500"></i> for someone special</p>
         </div>
     </div>
 
@@ -439,7 +437,6 @@
         // Play a subtle success sound (mobile-friendly)
         function playSuccessSound() {
             try {
-                // Create a simple beep using Web Audio API
                 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 const oscillator = audioContext.createOscillator();
                 const gainNode = audioContext.createGain();
@@ -447,31 +444,19 @@
                 oscillator.connect(gainNode);
                 gainNode.connect(audioContext.destination);
 
-                // Happy melody for mobile
-                oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime); // C5
-                oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // E5
-                oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2); // G5
+                oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime);
+                oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1);
+                oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2);
 
-                gainNode.gain.setValueAtTime(0.05, audioContext.currentTime); // Quieter on mobile
+                gainNode.gain.setValueAtTime(0.05, audioContext.currentTime);
                 gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
 
                 oscillator.start(audioContext.currentTime);
                 oscillator.stop(audioContext.currentTime + 0.5);
             } catch (e) {
-                // Audio context not supported, silently fail
-                console.log("Audio not supported on this device");
+                // Audio not supported
             }
         }
-
-        // Prevent accidental zoom on double-tap
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function (event) {
-            const now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
 
         // Add CSS for scale animation
         const style = document.createElement('style');
@@ -483,13 +468,6 @@
             @keyframes scaleIn {
                 from { transform: scale(0.85); opacity: 0; }
                 to { transform: scale(1); opacity: 1; }
-            }
-            
-            /* iOS Safari specific fixes */
-            @supports (-webkit-touch-callout: none) {
-                button {
-                    cursor: pointer;
-                }
             }
         `;
         document.head.appendChild(style);
